@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using FluentAssertions.Common;
 using NSubstitute;
 using SocialNetwork.Api;
 using SocialNetwork.Api.Controllers;
@@ -9,8 +8,8 @@ namespace SocialNetwork.Test
     public class TimeLineControllerShould
     {
         private TimeLineController _timelineController;
-        private IMessagesRepository? _messagesRepository;
-        private ITime? _time;
+        private IMessagesRepository _messagesRepository;
+        private ITime _time;
 
         [SetUp]
         public void Setup()
@@ -23,6 +22,7 @@ namespace SocialNetwork.Test
         [Test]
         public async Task GetEmptyWhenGetOwnMessages()
         {
+            _messagesRepository.Get().Returns(Enumerable.Empty<Message>());
 
             var result = await _timelineController.Get("Alice");
 
