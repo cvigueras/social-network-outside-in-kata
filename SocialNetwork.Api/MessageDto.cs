@@ -2,5 +2,5 @@
 
 public class MessageDto
 {
-    public string Post { get; set; }
+    public string? Post { get; set; }
 }
