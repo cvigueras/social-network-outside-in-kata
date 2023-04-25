@@ -2,6 +2,6 @@
 
 public interface IMessagesRepository
 {
-    public void Add(Message message);
-    IEnumerable<Message> Get();
+    public Task Add(Message message);
+    Task<IEnumerable<Message>> Get(string author);
 }

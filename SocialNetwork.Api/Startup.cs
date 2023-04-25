@@ -1,15 +1,18 @@
-﻿namespace SocialNetwork.Api
+﻿using System.Data.SQLite;
+using SocialNetwork.Api.Data;
+
+namespace SocialNetwork.Api
 {
     public class Startup
     {
-        public IConfiguration configRoot
+        public IConfiguration ConfigRoot
         {
             get;
         }
 
         public Startup(IConfiguration configuration)
         {
-            configRoot = configuration;
+            ConfigRoot = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -18,7 +21,11 @@
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-            services.AddSingleton<IMessagesRepository, MessageRepository>();
+            
+            DataBase.Create();
+
+            services.AddScoped(_ => new SQLiteConnection("Data Source=./SocialNetwork.db"));
+            services.AddScoped<IMessagesRepository, MessageRepository>();
             services.AddSingleton<ITime, Time>();
         }
 

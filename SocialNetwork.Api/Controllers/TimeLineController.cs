@@ -18,7 +18,7 @@ public class TimeLineController : ControllerBase
     [HttpGet("{user}")]
     public Task<IEnumerable<Message>> Get(string user)
     {
-        return Task.FromResult(Enumerable.Empty<Message>());
+        return _messagesRepository.Get(user);
     }
 
     [HttpPost("{author}")]

@@ -12,7 +12,7 @@ namespace SocialNetwork.Test
         private ITime _time;
 
         [SetUp]
-        public void Setup()
+        public void SetUp()
         {
             _messagesRepository = Substitute.For<IMessagesRepository>();
             _time = Substitute.For<ITime>();
@@ -22,7 +22,7 @@ namespace SocialNetwork.Test
         [Test]
         public async Task GetEmptyWhenGetOwnMessages()
         {
-            _messagesRepository.Get().Returns(Enumerable.Empty<Message>());
+            _messagesRepository.Get("Alice").Returns(Enumerable.Empty<Message>());
 
             var result = await _timelineController.Get("Alice");
 

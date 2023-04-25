@@ -1,15 +1,25 @@
-﻿namespace SocialNetwork.Api
+﻿using System.Data.SQLite;
+using Dapper;
+
+namespace SocialNetwork.Api
 {
     public class MessageRepository : IMessagesRepository
     {
-        public void Add(Message message)
+        private readonly SQLiteConnection _connection;
+
+        public MessageRepository(SQLiteConnection connection)
         {
-            throw new NotImplementedException();
+            _connection = connection;
         }
 
-        public IEnumerable<Message> Get()
+        public async Task Add(Message message)
         {
-            throw new NotImplementedException();
+            await _connection.ExecuteAsync($"INSERT INTO Messages(Author, Post, Timestamp) VALUES('{message.Author}', '{message.Post}', '{message.Timestamp:O}')");
+        }
+
+        public Task<IEnumerable<Message>> Get(string author)
+        {
+            return _connection.QueryAsync<Message>($"SELECT Author, Post, Timestamp FROM Messages WHERE Author = '{author}' ORDER BY Timestamp DESC");
         }
     }
 }
