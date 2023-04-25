@@ -10,9 +10,9 @@ namespace SocialNetwork.Test
         {
             var timelineController = new TimeLineController();
 
-            var result = timelineController.Get("Alice");
+            var result = await timelineController.Get("Alice");
 
-            result.ToString().Should().BeEmpty();
+            result.Should().BeEmpty();
         }
     }
 }

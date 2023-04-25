@@ -7,8 +7,8 @@ namespace SocialNetwork.Api.Controllers;
 public class TimeLineController : ControllerBase
 {
     [HttpGet("{user}")]
-    public object Get(string user)
+    public Task<IEnumerable<Message>> Get(string user)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(Enumerable.Empty<Message>());
     }
 }
