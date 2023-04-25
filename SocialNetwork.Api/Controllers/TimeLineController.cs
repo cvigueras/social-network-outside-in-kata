@@ -21,15 +21,15 @@ public class TimeLineController : ControllerBase
         return Task.FromResult(Enumerable.Empty<Message>());
     }
 
-    [HttpPost()]
-    public Task Post(MessageDto messageDto)
+    [HttpPost("{author}")]
+    public Task Post(string author, MessageDto messageDto)
     {
         _messagesRepository.Add(
             new Message
             {
                 Timestamp = _time.Timestamp(),
                 Post = messageDto.Post,
-                Author = messageDto.Author,
+                Author = author,
             }
         );
         return Task.CompletedTask;

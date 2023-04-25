@@ -36,10 +36,9 @@ namespace SocialNetwork.Test
             var givenMessage = new MessageDto
             {
                 Post = "Hello everyone",
-                Author = "Alice",
             };
 
-            _timelineController.Post(givenMessage);
+            _timelineController.Post("Alice",givenMessage);
 
             var expectedMessage = new Message
             {
