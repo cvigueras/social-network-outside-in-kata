@@ -11,4 +11,9 @@ public class TimeLineController : ControllerBase
     {
         return Task.FromResult(Enumerable.Empty<Message>());
     }
+
+    public void Post(object messageDTo)
+    {
+        throw new NotImplementedException();
+    }
 }
