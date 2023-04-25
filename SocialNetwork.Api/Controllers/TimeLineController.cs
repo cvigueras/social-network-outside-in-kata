@@ -15,10 +15,10 @@ public class TimeLineController : ControllerBase
         _time = time;
     }
 
-    [HttpGet("{user}")]
-    public Task<IEnumerable<Message>> Get(string user)
+    [HttpGet("{author}")]
+    public Task<IEnumerable<Message>> Get(string author)
     {
-        return _messagesRepository.Get(user);
+        return _messagesRepository.Get(author);
     }
 
     [HttpPost("{author}")]

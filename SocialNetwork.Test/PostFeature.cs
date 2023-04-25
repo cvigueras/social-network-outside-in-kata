@@ -1,4 +1,7 @@
 ﻿using Newtonsoft.Json;
+using NSubstitute;
+using SocialNetwork.Api;
+using System.Text;
 
 namespace SocialNetwork.Test
 {
@@ -7,15 +10,22 @@ namespace SocialNetwork.Test
         [Test]
         public async Task GetOwnUserMessagesAfterPost()
         {
-            var socialNetwork = new SocialNetworkApplication();
+            var time = Substitute.For<ITime>();
+            var socialNetwork = new SocialNetworkApplication(time);
+            time.Timestamp().Returns(new DateTime(2023, 4, 18, 14, 35, 0),
+                new DateTime(2023, 4, 18, 14, 38, 0),
+                new DateTime(2023, 4, 18, 14, 48, 0));
+
             var client = socialNetwork.CreateClient();
 
-            await client.PostAsync("/Timeline/Alice", new StringContent("{\"message\":\"Hello world\"}"));
-            await client.PostAsync("/Timeline/Alice", new StringContent("{\"message\":\"I'm new user\"}"));
-            await client.PostAsync("/Timeline/Alice", new StringContent("{\"message\":\"Hello everyone\"}"));
+            var result = await client.PostAsync("/Timeline/Alice", new StringContent("{\"post\":\"Hello world\"}", Encoding.Default, "application/json"));
+            result.EnsureSuccessStatusCode();
+            result = await client.PostAsync("/Timeline/Alice", new StringContent("{\"post\":\"I am new user\"}", Encoding.Default, "application/json"));
+            result.EnsureSuccessStatusCode();
+            result = await client.PostAsync("/Timeline/Alice", new StringContent("{\"post\":\"Hello everyone\"}", Encoding.Default, "application/json"));
+            result.EnsureSuccessStatusCode();
 
             var response = await client.GetAsync("/Timeline/Alice");
-
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();
