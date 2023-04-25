@@ -400,3 +400,4 @@ FodyWeavers.xsd
 #Test files
 *.received.txt
 *.verified.txt
+/SocialNetwork.Api/SocialNetwork.db
