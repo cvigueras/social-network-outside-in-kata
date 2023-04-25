@@ -6,12 +6,12 @@ namespace SocialNetwork.Test
 {
     public class SubscriptionsControllerShould
     {
-        private SubscriptionRepository _subscriptionRepository;
+        private ISubscriptionRepository _subscriptionRepository;
 
         [SetUp]
         public void SetUp()
         {
-            _subscriptionRepository = Substitute.For<SubscriptionRepository>();
+            _subscriptionRepository = Substitute.For<ISubscriptionRepository>();
         }
 
         [Test]
@@ -21,7 +21,6 @@ namespace SocialNetwork.Test
             {
                 Subscriber = "Charlie",
             };
-
 
             var subscriptionController = new SubscriptionsController(_subscriptionRepository);
             subscriptionController.Post("Alice", givenSubscription);

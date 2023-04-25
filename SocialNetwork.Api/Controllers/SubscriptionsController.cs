@@ -4,16 +4,22 @@ namespace SocialNetwork.Api.Controllers;
 
 public class SubscriptionsController : ControllerBase
 {
-    private readonly SubscriptionRepository _subscriptionRepository;
+    private readonly ISubscriptionRepository _subscriptionRepository;
 
-    public SubscriptionsController(SubscriptionRepository subscriptionRepository)
+    public SubscriptionsController(ISubscriptionRepository subscriptionRepository)
     {
         _subscriptionRepository = subscriptionRepository;
     }
 
     [HttpPost("{user}")]
-    public void Post(string user, SubscriptionDto givenSubscription)
+    public async Task Post(string user, SubscriptionDto subscriptionDto)
     {
-        throw new NotImplementedException();
+        var subscription = new Subscription
+        {
+            User = user,
+            Subscriber = subscriptionDto.Subscriber,
+        };
+
+        await _subscriptionRepository.Add(subscription);
     }
 }

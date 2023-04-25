@@ -19,6 +19,7 @@ namespace SocialNetwork.Test
                 services.AddSingleton(_time);
                 services.AddSingleton(_sqLiteConnection);
                 services.AddSingleton<IMessagesRepository, MessageRepository>();
+                services.AddSingleton<ISubscriptionRepository, SubscriptionRepository>();
             });
 
             return base.CreateHost(builder);
@@ -33,6 +34,10 @@ namespace SocialNetwork.Test
                 Author VARCHAR(100) NOT NULL,
                 Post VARCHAR(144) NOT NULL,
                 Timestamp DATETIME NOT NULL)");
+
+            _sqLiteConnection.Execute(@"Create Table if not exists Subscriptions(
+                User VARCHAR(100) NOT NULL,
+                Subscriber VARCHAR(100) NOT NULL)");
         }
     }
 }

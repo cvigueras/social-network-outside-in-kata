@@ -1,8 +1,8 @@
 ﻿namespace SocialNetwork.Api;
 
-public class SubscriptionRepository
+public class SubscriptionRepository : ISubscriptionRepository
 {
-    public void Add(Subscription subscription)
+    public Task<IEnumerable<Subscription>> Add(Subscription subscription)
     {
         throw new NotImplementedException();
     }
