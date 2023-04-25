@@ -3,41 +3,42 @@ TODO
 
 # Posting
 
-Dado: 
+Given: 
 
-- Alice posteó 'Hola a todos' un mensaje el 18/04/2023 a las 14:35
-- Alice posteó 'Soy usuario nuevo' un mensaje el 18/04/2023 a las 14:38
-- Alice posteó 'Hola mundo' un mensaje el 18/04/2023 a las 14:48
+- Alice posted 'Hello everyone' a message on 18/04/2023 at 14:35 p.m.
+- Alice posted 'I'm new user' a message on 18/04/2023 at 14:38 p.m.
+- Alice posted 'Hello world' a message on 18/04/2023 at 14:48 p.m.
  
-Cuando:
+When:
 
- Cuando el usuario pide el timeline de Alice.
+ When the user asks for Alice's timeline.
 
-Entonces:
+Then:
 
-Aparece el timeline con los siguientes mensajes:
+The timeline appears with the following messages:
 
-- 18/04/2023 14:48 Alice => Hola mundo.
-- 18/04/2023 14:38 Alice => Soy usuario nuevo.
-- 18/04/2023 14:35 Alice => Hola a todos.
+- 18/04/2023 14:48 Alice => Hello world.
+- 18/04/2023 14:38 Alice => I'm new user.
+- 18/04/2023 14:35 Alice => Hello everyone.
 
 # Following
 
-Dado: 
+Given: 
 
-- Bob posteó 'Hola soy Bob' un mensaje el 18/04/2023 a las 14:35
-- Alice posteó 'Hola soy Alice' un mensaje el 18/04/2023 a las 14:38
-- Charlie posteó 'Hola soy Charlie' un mensaje el 18/04/2023 a las 14:48
-- Charlie se ha suscrito a Alice
-- Charlie se ha suscrito a Bob
+- Bob posted 'Hello I'm Bob' a menssage on 18/04/2023 at 14:35 p.m.
+- Alice posted 'Hello I'm Alice' a menssage on 18/04/2023 at 14:38 p.m.
+- Charlie posted 'Hello I'm Charlie' a message on 18/04/2023 at 14:48 p.m.
+- Charlie has subscribed to Alice
+- Charlie has subscribed to Bob
  
-Cuando:
+When:
 
-Charlie pide ver su wall
+Charlie asks to see his wall.
 
-Entonces:
+Then:
 
-Aparece la siguiente lista de mensajes:
-- 18/04/2023 14:48 Charlie => Hola soy Charlie.
-- 18/04/2023 14:38 Alice => Hola soy Alice.
-- 18/04/2023 14:35 Bob => Hola soy Bob.
+The following list of messages appears:
+
+- 18/04/2023 14:48 Charlie => Hello I'm Charlie.
+- 18/04/2023 14:38 Alice => Hello I'm Alice.
+- 18/04/2023 14:35 Bob => Hello I'm Bob.
