@@ -32,7 +32,7 @@ namespace SocialNetwork.Test
         [Test]
         public void PostMessage()
         {
-            _time.Timestamp.Returns(new DateTime(2023, 4, 18, 14, 35, 0));
+            _time.Timestamp().Returns(new DateTime(2023, 4, 18, 14, 35, 0));
             var givenMessage = new MessageDto
             {
                 Post = "Hello everyone",
@@ -43,7 +43,7 @@ namespace SocialNetwork.Test
 
             var expectedMessage = new Message
             {
-                Timestamp = _time.Timestamp,
+                Timestamp = _time.Timestamp(),
                 Post = "Hello everyone",
                 Author = "Alice",
             };

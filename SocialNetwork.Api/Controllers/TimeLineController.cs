@@ -27,7 +27,7 @@ public class TimeLineController : ControllerBase
         _messagesRepository.Add(
             new Message
             {
-                Timestamp = _time.Timestamp,
+                Timestamp = _time.Timestamp(),
                 Post = messageDto.Post,
                 Author = messageDto.Author,
             }

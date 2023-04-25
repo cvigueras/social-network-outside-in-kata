@@ -2,5 +2,5 @@
 
 public interface ITime
 {
-    DateTime Timestamp { get; }
+    DateTime Timestamp();
 }
