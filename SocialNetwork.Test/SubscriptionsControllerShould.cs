@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using NSubstitute;
+﻿using NSubstitute;
+using SocialNetwork.Api;
+using SocialNetwork.Api.Controllers;
 
 namespace SocialNetwork.Test
 {
@@ -33,40 +34,5 @@ namespace SocialNetwork.Test
             };
             _subscriptionRepository.Received().Add(expectedSubscription);
         }
-    }
-
-    public class SubscriptionsController : ControllerBase
-    {
-        private readonly SubscriptionRepository _subscriptionRepository;
-
-        public SubscriptionsController(SubscriptionRepository subscriptionRepository)
-        {
-            _subscriptionRepository = subscriptionRepository;
-        }
-
-        [HttpPost("{user}")]
-        public void Post(string user, SubscriptionDto givenSubscription)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class SubscriptionDto
-    {
-        public string Subscriber { get; set; }
-    }
-
-    public class SubscriptionRepository
-    {
-        public void Add(Subscription subscription)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class Subscription
-    {
-        public string User { get; set; }
-        public string Subscriber { get; set; }
     }
 }

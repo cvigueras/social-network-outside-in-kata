@@ -6,7 +6,10 @@ startup.ConfigureServices(builder.Services); // calling ConfigureServices method
 var app = builder.Build();
 startup.Configure(app, builder.Environment); // calling Configure method
 
-public partial class Program
+namespace SocialNetwork.Api
 {
+    public partial class Program
+    {
 
+    }
 }
