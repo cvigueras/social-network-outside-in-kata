@@ -2,5 +2,5 @@
 
 public class SubscriptionDto
 {
-    public string Subscriber { get; set; }
+    public string? Subscriber { get; set; }
 }

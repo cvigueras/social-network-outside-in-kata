@@ -1,9 +1,19 @@
-﻿namespace SocialNetwork.Api;
+﻿using Dapper;
+using System.Data.SQLite;
+
+namespace SocialNetwork.Api;
 
 public class SubscriptionRepository : ISubscriptionRepository
 {
-    public Task<IEnumerable<Subscription>> Add(Subscription subscription)
+    private readonly SQLiteConnection _connection;
+
+    public SubscriptionRepository(SQLiteConnection connection)
     {
-        throw new NotImplementedException();
+        _connection = connection;
+    }
+
+    public Task Add(Subscription subscription)
+    {
+        return _connection.ExecuteAsync($"INSERT INTO Subscriptions(Subscriber, User) VALUES('{subscription.Subscriber}', '{subscription.User}')");
     }
 }

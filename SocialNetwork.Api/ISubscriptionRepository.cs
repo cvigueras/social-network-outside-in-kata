@@ -2,5 +2,5 @@
 
 public interface ISubscriptionRepository
 {
-    Task<IEnumerable<Subscription>> Add(Subscription subscription);
+    Task Add(Subscription subscription);
 }

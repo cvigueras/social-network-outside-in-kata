@@ -28,8 +28,11 @@ namespace SocialNetwork.Test
         public SocialNetworkApplication(ITime time)
         {
             _time = time;
+
             _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
+
             _sqLiteConnection.Open();
+
             _sqLiteConnection.Execute(@"Create Table if not exists Messages(
                 Author VARCHAR(100) NOT NULL,
                 Post VARCHAR(144) NOT NULL,

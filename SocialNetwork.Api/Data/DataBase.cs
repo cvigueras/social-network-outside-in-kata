@@ -13,6 +13,10 @@ namespace SocialNetwork.Api.Data
                 Post VARCHAR(144) NOT NULL,
                 Timestamp DATETIME NOT NULL)");
 
+            sqLiteConnection.Execute(@"Create Table if not exists Subscriptions(
+                User VARCHAR(100) NOT NULL,
+                Subscriber VARCHAR(100) NOT NULL)");
+
             sqLiteConnection.Close();
             sqLiteConnection.Dispose();
         }

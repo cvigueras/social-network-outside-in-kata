@@ -28,11 +28,11 @@ namespace SocialNetwork.Test
                 new StringContent("{\"post\":\"Hello I am Charlie\"}", Encoding.Default, "application/json"));
             result.EnsureSuccessStatusCode();
 
-            result = await client.PostAsync("/Subscribing/Alice",
-                new StringContent("{\"user\":\"Charlie\"}", Encoding.Default, "application/json"));
+            result = await client.PostAsync("/Subscriptions/Alice",
+                new StringContent("{\"subscriber\":\"Charlie\"}", Encoding.Default, "application/json"));
             result.EnsureSuccessStatusCode();
-            result = await client.PostAsync("/Subscribing/Bob",
-                new StringContent("{\"user\":\"Charlie\"}", Encoding.Default, "application/json"));
+            result = await client.PostAsync("/Subscriptions/Bob",
+                new StringContent("{\"subscriber\":\"Charlie\"}", Encoding.Default, "application/json"));
             result.EnsureSuccessStatusCode();
 
             var response = await client.GetAsync("/Wall/Charlie");

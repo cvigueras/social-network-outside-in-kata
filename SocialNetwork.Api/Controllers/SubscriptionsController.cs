@@ -2,6 +2,8 @@
 
 namespace SocialNetwork.Api.Controllers;
 
+[ApiController]
+[Route("[controller]")]
 public class SubscriptionsController : ControllerBase
 {
     private readonly ISubscriptionRepository _subscriptionRepository;
@@ -12,7 +14,7 @@ public class SubscriptionsController : ControllerBase
     }
 
     [HttpPost("{user}")]
-    public async Task Post(string user, SubscriptionDto subscriptionDto)
+    public Task Post(string user, SubscriptionDto subscriptionDto)
     {
         var subscription = new Subscription
         {
@@ -20,6 +22,7 @@ public class SubscriptionsController : ControllerBase
             Subscriber = subscriptionDto.Subscriber,
         };
 
-        await _subscriptionRepository.Add(subscription);
+        _subscriptionRepository.Add(subscription);
+        return Task.CompletedTask;
     }
 }
