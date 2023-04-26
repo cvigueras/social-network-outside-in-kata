@@ -11,12 +11,12 @@ namespace SocialNetwork.Test.Messages
         public async Task GetOwnUserMessagesAfterPost()
         {
             var time = Substitute.For<ITime>();
-            var socialNetwork = new SocialNetworkApplication(time);
+            var startup = new StartupTest(time);
             time.Timestamp().Returns(new DateTime(2023, 4, 18, 14, 35, 0),
                 new DateTime(2023, 4, 18, 14, 38, 0),
                 new DateTime(2023, 4, 18, 14, 48, 0));
 
-            var client = socialNetwork.CreateClient();
+            var client = startup.CreateClient();
 
             var result = await client.PostAsync("/Messages/Alice", new StringContent("{\"post\":\"Hello world\"}", Encoding.Default, "application/json"));
             result.EnsureSuccessStatusCode();

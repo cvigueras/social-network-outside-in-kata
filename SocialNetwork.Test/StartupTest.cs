@@ -10,7 +10,7 @@ using SocialNetwork.Api.Time;
 
 namespace SocialNetwork.Test
 {
-    public class SocialNetworkApplication: WebApplicationFactory<Program>
+    public class StartupTest: WebApplicationFactory<Program>
     {
         private readonly ITime _time;
         private readonly SQLiteConnection _sqLiteConnection;
@@ -28,7 +28,7 @@ namespace SocialNetwork.Test
             return base.CreateHost(builder);
         }
 
-        public SocialNetworkApplication(ITime time)
+        public StartupTest(ITime time)
         {
             _time = time;
 

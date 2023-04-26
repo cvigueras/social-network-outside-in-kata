@@ -11,12 +11,12 @@ namespace SocialNetwork.Test.Subscriptions
         public async Task GetOwnUserAndSubscribingMessagesAfterOtherUsersPost()
         {
             var time = Substitute.For<ITime>();
-            var socialNetwork = new SocialNetworkApplication(time);
+            var startup = new StartupTest(time);
             time.Timestamp().Returns(new DateTime(2023, 4, 18, 14, 35, 0),
                 new DateTime(2023, 4, 18, 14, 38, 0),
                 new DateTime(2023, 4, 18, 14, 48, 0));
 
-            var client = socialNetwork.CreateClient();
+            var client = startup.CreateClient();
 
             var result = await client.PostAsync("/Messages/Bob",
                 new StringContent("{\"post\":\"Hello I am Bob\"}", Encoding.Default, "application/json"));
