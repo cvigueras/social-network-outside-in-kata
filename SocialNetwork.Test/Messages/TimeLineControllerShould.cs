@@ -22,7 +22,7 @@ namespace SocialNetwork.Test.Messages
         [Test]
         public async Task GetEmptyWhenGetOwnMessages()
         {
-            _messagesRepository.Get("Alice").Returns(Enumerable.Empty<Message>());
+            _messagesRepository.GetByAuthor("Alice").Returns(Enumerable.Empty<Message>());
 
             var result = await _timelineController.Get("Alice");
 

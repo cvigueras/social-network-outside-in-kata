@@ -19,7 +19,7 @@ public class MessagesController : ControllerBase
     [HttpGet("{author}")]
     public Task<IEnumerable<Message>> Get(string author)
     {
-        return _messagesRepository.Get(author);
+        return _messagesRepository.GetByAuthor(author);
     }
 
     [HttpPost("{author}")]
