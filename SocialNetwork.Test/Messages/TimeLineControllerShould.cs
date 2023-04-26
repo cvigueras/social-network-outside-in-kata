@@ -1,13 +1,13 @@
 ﻿using FluentAssertions;
 using NSubstitute;
-using SocialNetwork.Api;
-using SocialNetwork.Api.Controllers;
+using SocialNetwork.Api.Messages;
+using SocialNetwork.Api.Time;
 
-namespace SocialNetwork.Test
+namespace SocialNetwork.Test.Messages
 {
     public class TimeLineControllerShould
     {
-        private TimeLineController _timelineController;
+        private MessagesController _timelineController;
         private IMessagesRepository _messagesRepository;
         private ITime _time;
 
@@ -16,7 +16,7 @@ namespace SocialNetwork.Test
         {
             _messagesRepository = Substitute.For<IMessagesRepository>();
             _time = Substitute.For<ITime>();
-            _timelineController = new TimeLineController(_messagesRepository, _time);
+            _timelineController = new MessagesController(_messagesRepository, _time);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace SocialNetwork.Test
                 Post = "Hello everyone",
             };
 
-            _timelineController.Post("Alice",givenMessage);
+            _timelineController.Post("Alice", givenMessage);
 
             var expectedMessage = new Message
             {

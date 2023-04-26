@@ -1,4 +1,4 @@
-﻿namespace SocialNetwork.Api;
+﻿namespace SocialNetwork.Api.Subscriptions;
 
 public interface ISubscriptionRepository
 {

@@ -1,8 +1,7 @@
 ﻿using NSubstitute;
-using SocialNetwork.Api;
-using SocialNetwork.Api.Controllers;
+using SocialNetwork.Api.Subscriptions;
 
-namespace SocialNetwork.Test
+namespace SocialNetwork.Test.Subscriptions
 {
     public class SubscriptionsControllerShould
     {

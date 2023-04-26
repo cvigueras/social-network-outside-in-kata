@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SocialNetwork.Api.Controllers;
+namespace SocialNetwork.Api.Subscriptions;
 
 [ApiController]
 [Route("[controller]")]

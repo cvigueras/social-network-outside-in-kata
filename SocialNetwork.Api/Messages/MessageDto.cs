@@ -1,4 +1,4 @@
-﻿namespace SocialNetwork.Api;
+﻿namespace SocialNetwork.Api.Messages;
 
 public class MessageDto
 {

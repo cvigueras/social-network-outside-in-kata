@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SocialNetwork.Api.Time;
 
-namespace SocialNetwork.Api.Controllers;
+namespace SocialNetwork.Api.Messages;
 
 [ApiController]
 [Route("[controller]")]
-public class TimeLineController : ControllerBase
+public class MessagesController : ControllerBase
 {
     private readonly IMessagesRepository _messagesRepository;
     private readonly ITime _time;
 
-    public TimeLineController(IMessagesRepository messagesRepository, ITime time)
+    public MessagesController(IMessagesRepository messagesRepository, ITime time)
     {
         _messagesRepository = messagesRepository;
         _time = time;

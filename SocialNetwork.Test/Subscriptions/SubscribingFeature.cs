@@ -1,9 +1,9 @@
 ﻿using NSubstitute;
-using SocialNetwork.Api;
 using System.Text;
 using Newtonsoft.Json;
+using SocialNetwork.Api.Time;
 
-namespace SocialNetwork.Test
+namespace SocialNetwork.Test.Subscriptions
 {
     public class SubscribingFeature
     {
@@ -18,13 +18,13 @@ namespace SocialNetwork.Test
 
             var client = socialNetwork.CreateClient();
 
-            var result = await client.PostAsync("/Timeline/Bob", 
+            var result = await client.PostAsync("/Messages/Bob",
                 new StringContent("{\"post\":\"Hello I am Bob\"}", Encoding.Default, "application/json"));
             result.EnsureSuccessStatusCode();
-            result = await client.PostAsync("/Timeline/Alice", 
+            result = await client.PostAsync("/Messages/Alice",
                 new StringContent("{\"post\":\"Hello I am Alice\"}", Encoding.Default, "application/json"));
             result.EnsureSuccessStatusCode();
-            result = await client.PostAsync("/Timeline/Charlie", 
+            result = await client.PostAsync("/Messages/Charlie",
                 new StringContent("{\"post\":\"Hello I am Charlie\"}", Encoding.Default, "application/json"));
             result.EnsureSuccessStatusCode();
 

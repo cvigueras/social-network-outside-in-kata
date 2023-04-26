@@ -1,5 +1,7 @@
 ﻿using System.Data.SQLite;
 using SocialNetwork.Api.Data;
+using SocialNetwork.Api.Messages;
+using SocialNetwork.Api.Time;
 
 namespace SocialNetwork.Api
 {
@@ -26,7 +28,7 @@ namespace SocialNetwork.Api
 
             services.AddScoped(_ => new SQLiteConnection("Data Source=./SocialNetwork.db"));
             services.AddScoped<IMessagesRepository, MessageRepository>();
-            services.AddSingleton<ITime, Time>();
+            services.AddSingleton<ITime, Time.Time>();
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)

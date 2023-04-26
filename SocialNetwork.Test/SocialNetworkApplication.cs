@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SocialNetwork.Api;
+using SocialNetwork.Api.Messages;
+using SocialNetwork.Api.Subscriptions;
 using System.Data.SQLite;
+using SocialNetwork.Api.Time;
 
 namespace SocialNetwork.Test
 {

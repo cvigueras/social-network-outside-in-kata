@@ -1,7 +1,7 @@
 ﻿using System.Data.SQLite;
 using Dapper;
 
-namespace SocialNetwork.Api
+namespace SocialNetwork.Api.Messages
 {
     public class MessageRepository : IMessagesRepository
     {
