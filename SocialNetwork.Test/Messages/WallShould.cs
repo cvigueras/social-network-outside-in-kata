@@ -6,12 +6,12 @@ namespace SocialNetwork.Test.Messages
     public class WallShould
     {
         [Test]
-        public void ReturnEmptyMessages()
+        public async Task ReturnEmptyMessages()
         {
             var wallController = new WallController();
-            var result = wallController.Get();
+            var result = await wallController.Get();
 
-            result.Should().Be(Enumerable.Empty<Message>());
+            result.Should().BeEmpty();
         }
     }
 }

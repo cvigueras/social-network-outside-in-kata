@@ -7,8 +7,8 @@ namespace SocialNetwork.Api.Messages;
 public class WallController : ControllerBase
 {
     [HttpGet]
-    public Task<IEnumerable<Message>> Get()
+    public async Task<IEnumerable<Message>> Get()
     {
-        throw new NotImplementedException();
+        return await Task.FromResult(Enumerable.Empty<Message>());
     }
 }
