@@ -6,6 +6,13 @@ namespace SocialNetwork.Api.Messages;
 [Route("[controller]")]
 public class WallController : ControllerBase
 {
+    private readonly IMessagesRepository _messagesRepository;
+
+    public WallController(IMessagesRepository messagesRepository)
+    {
+        _messagesRepository = messagesRepository;
+    }
+
     [HttpGet]
     public async Task<IEnumerable<Message>> Get()
     {

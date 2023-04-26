@@ -21,5 +21,10 @@ namespace SocialNetwork.Api.Messages
         {
             return _connection.QueryAsync<Message>($"SELECT Author, Post, Timestamp FROM Messages WHERE Author = '{author}' ORDER BY Timestamp DESC");
         }
+
+        public Task<IEnumerable<Message>> GetByAuthorAndSubscriptions(string user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
