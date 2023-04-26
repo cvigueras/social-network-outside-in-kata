@@ -22,9 +22,13 @@ namespace SocialNetwork.Api.Messages
             return _connection.QueryAsync<Message>($"SELECT Author, Post, Timestamp FROM Messages WHERE Author = '{author}' ORDER BY Timestamp DESC");
         }
 
-        public Task<IEnumerable<Message>> GetByAuthorAndSubscriptions(string user)
+        public async Task<IEnumerable<Message>> GetByAuthorAndSubscriptions(string user)
         {
-            throw new NotImplementedException();
+            var messagesSubscription = await _connection.QueryAsync<Message>($"SELECT M.Author, M.Post, M.Timestamp FROM Messages M JOIN Subscriptions S ON M.Author = S.User WHERE S.Subscriber = '{user}'");
+
+            var ownMessages = await _connection.QueryAsync<Message>($"SELECT Author, Post, Timestamp FROM Messages WHERE Author = '{user}'");
+
+            return messagesSubscription.Concat(ownMessages).OrderByDescending(message => message.Timestamp);
         }
     }
 }

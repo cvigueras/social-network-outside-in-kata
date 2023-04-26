@@ -13,9 +13,9 @@ public class WallController : ControllerBase
         _messagesRepository = messagesRepository;
     }
 
-    [HttpGet]
-    public async Task<IEnumerable<Message>> Get()
+    [HttpGet ("{author}")]
+    public async Task<IEnumerable<Message>> Get(string author)
     {
-        return await Task.FromResult(Enumerable.Empty<Message>());
+        return await _messagesRepository.GetByAuthorAndSubscriptions(author);
     }
 }

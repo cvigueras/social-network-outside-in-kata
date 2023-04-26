@@ -27,22 +27,28 @@ namespace SocialNetwork.Test.Messages
             var givenMessage = Enumerable.Empty<Message>();
             _messagesRepository.GetByAuthorAndSubscriptions("Alice").Returns(givenMessage);
 
-            var result = await _wallController.Get();
+            var result = await _wallController.Get("Alice");
 
             result.Should().BeEmpty();
         }
 
         [Test]
-        public void GetOneMessageFromOwnAndSubscription()
+        public async Task GetOneMessageFromOwnAndSubscription()
         {
-            var givenMessage = new Message
+            var givenMessage = new List<Message>
             {
-                Post = "Hello everyone.",
-                Author = "Alice",
-                Timestamp = _time.Timestamp(),
+                new()
+                {
+                    Post = "Hello everyone.",
+                    Author = "Alice",
+                    Timestamp = _time.Timestamp(),
+                }
             };
-            var result = _messagesRepository.GetByAuthorAndSubscriptions("Alice");
-            result.Should().Be(givenMessage);
+
+            _messagesRepository.GetByAuthorAndSubscriptions("Alice").Returns(givenMessage);
+
+            var result = await _messagesRepository.GetByAuthorAndSubscriptions("Alice");
+            result.Should().BeEquivalentTo(givenMessage);
         }
     }
 }
